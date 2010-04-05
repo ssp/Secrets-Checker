@@ -1,0 +1,72 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = FlagChangeWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {capsLockIndicatorTextField = id; }; 
+            SUPERCLASS = NSWindow; 
+        }, 
+        {
+            ACTIONS = {
+                OKImportSheet = id; 
+                OKPassphraseSheet = id; 
+                OKPublicKeySheet = id; 
+                OKSymmetricSettingsSheet = id; 
+                addFolder = id; 
+                addItem = id; 
+                cancelImportSheet = id; 
+                cancelPassphraseSheet = id; 
+                cancelPublicKeySheet = id; 
+                cancelSymmetricSettingsSheet = id; 
+                changeEncryptionType = id; 
+                changeSelection = id; 
+                changeSymmetricMatrix = id; 
+                deleteItem = id; 
+                showOptions = id; 
+                showPublicKeyOptions = id; 
+                showSymmetricOptions = id; 
+                switchDisplayFolders = id; 
+                switchLabelsOnly = id; 
+                toggleDrawer = id; 
+            }; 
+            CLASS = MyDocWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                algorithmMatrix = id; 
+                algorithmPopup = id; 
+                browser = id; 
+                exportAuxiliaryView = id; 
+                exportFormatPopup = id; 
+                filterDrawer = id; 
+                filterField = id; 
+                filterLabelsOnlyCheckBox = id; 
+                filterShowFoldersCheckBox = id; 
+                importOptionsEncodingSetting = id; 
+                importOptionsFileIcon = id; 
+                importOptionsFileName = id; 
+                importOptionsImportSetting = id; 
+                importOptionsSheet = id; 
+                passphraseSheet = id; 
+                passphraseSheetInfoTextField = id; 
+                passphraseSheetPassphraseTextField = id; 
+                privateKeyPopup = id; 
+                publicKeyOKButton = id; 
+                publicKeySettingsSheet = id; 
+                splitView = id; 
+                statusField = id; 
+                symmetricHintField = id; 
+                symmetricPasswordField = id; 
+                symmetricRePasswordField = id; 
+                symmetricSettingsSheet = id; 
+                textField = id; 
+                toolbarPopupMenu = id; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = MyDocument; LANGUAGE = ObjC; SUPERCLASS = NSDocument; }, 
+        {CLASS = MyOutlineView; LANGUAGE = ObjC; SUPERCLASS = NSOutlineView; }, 
+        {CLASS = NSOutlineView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }
+    ); 
+    IBVersion = 1; 
+}

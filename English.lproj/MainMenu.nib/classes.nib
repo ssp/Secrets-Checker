@@ -1,0 +1,40 @@
+{
+    IBClasses = (
+        {CLASS = AppController; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                addFolder = id; 
+                addItem = id; 
+                changeEncryptionType = id; 
+                deleteItem = id; 
+                export = id; 
+                showOptions = id; 
+                toggleDrawer = id; 
+            }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {
+                changeCheckboxes = id; 
+                poupMenuChange = id; 
+                setGPGPath = id; 
+                showIconsChange = id; 
+            }; 
+            CLASS = PrefsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                locationCustomRadioButton = id; 
+                locationEasyGPGRadioButton = id; 
+                locationFinkRadioButton = id; 
+                locationRadioButtons = id; 
+                locationTextField = id; 
+                privateKeyPopupMenu = id; 
+                showIconsCheckbox = id; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

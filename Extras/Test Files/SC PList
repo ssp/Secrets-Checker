@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Welcome</string>
+			<key>secret</key>
+			<string>To Secrets Checker</string>
+		</dict>
+		<dict>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Du</string>
+					<key>secret</key>
+					<string>Nase</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Naaaa</string>
+		</dict>
+		<dict>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>items</key>
+					<array>
+						<dict>
+							<key>items</key>
+							<array>
+								<dict>
+									<key>name</key>
+									<string>Welt</string>
+									<key>secret</key>
+									<string>ist groß</string>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>Hallo</string>
+						</dict>
+					</array>
+					<key>name</key>
+					<string>Aber</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Ja</string>
+		</dict>
+	</array>
+</plist>

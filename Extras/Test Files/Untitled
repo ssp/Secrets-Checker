@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<key>custom symmetric cipher</key>
+	<string></string>
+	<key>data</key>
+	<string>-----BEGIN PGP MESSAGE-----
+Comment: Weitere Infos: siehe http://www.gnupg.org
+
+jA0EAwMCFK5j+SOKKrBgybBoEJRntT6puDTFTgXNZb42hCcn0/YxW7uZe1eAxrK2
+iGnJeXfFR7ooSJupzttM7U2cXoE3dYjXlgINd26V4tELUeF7rFIIRWBVh+P/jRWn
+G9FEtKDYN+za/5N0lmwONICmMoSNLJW2MDJ94QwTgPJFdxAQ1YczLj5eDCTcu+lX
+oVUzBVoH8NqPNnXXDqICILFVjwPMqaZTI3uWoIrZVqyAAbNYJUf5BdwBiPyuAIVf
+uQ==
+=Liwc
+-----END PGP MESSAGE-----
+</string>
+	<key>encryption</key>
+	<string>symmetric</string>
+	<key>filter drawer is open</key>
+	<false/>
+	<key>filter: include folders</key>
+	<false/>
+	<key>filter: search labels only</key>
+	<true/>
+	<key>password hint</key>
+	<string></string>
+	<key>use custom symmetric cipher</key>
+	<false/>
+	<key>window position</key>
+	<string>99 394 563 282 0 0 1152 746 </string>
+</dict>
+</plist>

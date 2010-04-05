@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<key>data</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Welcome</string>
+			<key>secret</key>
+			<string>To Secrets Checker</string>
+		</dict>
+		<dict>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Du</string>
+					<key>secret</key>
+					<string>Nase</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Naaaa</string>
+		</dict>
+		<dict>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>items</key>
+					<array>
+						<dict>
+							<key>items</key>
+							<array>
+								<dict>
+									<key>name</key>
+									<string>Welt</string>
+									<key>secret</key>
+									<string>ist groß</string>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>Hallo</string>
+						</dict>
+					</array>
+					<key>name</key>
+					<string>Aber</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Ja</string>
+		</dict>
+	</array>
+	<key>encryption</key>
+	<string>none</string>
+	<key>split view position</key>
+	<real>9.200000000000000e+01</real>
+	<key>window position</key>
+	<string>356 48 562 336 0 0 1152 746 </string>
+</dict>
+</plist>
