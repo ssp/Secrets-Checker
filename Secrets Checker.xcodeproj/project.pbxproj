@@ -29,8 +29,6 @@
 		6C971B920E5D8B5000A2EE31 /* NewFolder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F5FA758C0249694F01D27817 /* NewFolder.tiff */; };
 		6C971B930E5D8B5000A2EE31 /* NewItem.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F5FA758D0249694F01D27817 /* NewItem.tiff */; };
 		6C971B940E5D8B5000A2EE31 /* Wastebasket.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F5FA75920249694F01D27817 /* Wastebasket.tiff */; };
-		6C971B950E5D8B5000A2EE31 /* MiniDocument.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F56261B6024C0D74016DC693 /* MiniDocument.tiff */; };
-		6C971B960E5D8B5000A2EE31 /* MiniFolder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F56261B7024C0D74016DC693 /* MiniFolder.tiff */; };
 		6C971B970E5D8B5000A2EE31 /* Document Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F52944F802568EC001D4785C /* Document Icon.icns */; };
 		6C971B990E5D8B5000A2EE31 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		6C971B9A0E5D8B5000A2EE31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -77,8 +75,6 @@
 		F52944F802568EC001D4785C /* Document Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Document Icon.icns"; sourceTree = "<group>"; };
 		F52944FA02568EF601D4785C /* SDI.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SDI.tiff; sourceTree = "<group>"; };
 		F561E8AE024AAFB0010EFA46 /* MyDocWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocWindowController.m; sourceTree = "<group>"; };
-		F56261B6024C0D74016DC693 /* MiniDocument.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MiniDocument.tiff; sourceTree = "<group>"; };
-		F56261B7024C0D74016DC693 /* MiniFolder.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MiniFolder.tiff; sourceTree = "<group>"; };
 		F56261BB024D4A9C016DC693 /* To Do.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "To Do.text"; sourceTree = "<group>"; };
 		F58B6461024424A0019897C4 /* PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsController.h; sourceTree = "<group>"; };
 		F58B6462024424A0019897C4 /* PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsController.m; sourceTree = "<group>"; };
@@ -232,8 +228,6 @@
 		F5FA75870249694F01D27817 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				F56261B6024C0D74016DC693 /* MiniDocument.tiff */,
-				F56261B7024C0D74016DC693 /* MiniFolder.tiff */,
 				F5FA75880249694F01D27817 /* Disk.tiff */,
 				F5FA758C0249694F01D27817 /* NewFolder.tiff */,
 				F5FA758D0249694F01D27817 /* NewItem.tiff */,
@@ -321,8 +315,6 @@
 				6C971B920E5D8B5000A2EE31 /* NewFolder.tiff in Resources */,
 				6C971B930E5D8B5000A2EE31 /* NewItem.tiff in Resources */,
 				6C971B940E5D8B5000A2EE31 /* Wastebasket.tiff in Resources */,
-				6C971B950E5D8B5000A2EE31 /* MiniDocument.tiff in Resources */,
-				6C971B960E5D8B5000A2EE31 /* MiniFolder.tiff in Resources */,
 				6C971B970E5D8B5000A2EE31 /* Document Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
