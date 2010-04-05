@@ -237,7 +237,7 @@
 
 - (void)savePanelDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void  *)contextInfo;
 {
-	id resultObject;
+	id resultObject = nil;
 	NSArray* items = ([[self selectedNodes] count]) ? [self selectedNodes] : [[self currentData] children];
 	SimpleTreeNode * node = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData groupDataWithName:@"root"] parent:nil children:items] autorelease];
 
@@ -259,7 +259,7 @@
 			// human readable
 			resultObject = [node listForTreeTabbed:NO];
 		}
-
+		
 		[resultObject writeToFile:path atomically:NO];
 		[[NSFileManager defaultManager] changeFileAttributes:
 			[NSDictionary dictionaryWithObjectsAndKeys:
@@ -757,7 +757,7 @@ itemForPersistentObject:(id)data
 	// Helper method to insert dropped data into the model.
 	NSPasteboard * pboard = [info draggingPasteboard];
 	NSMutableArray * itemsToSelect = nil;
-	SimpleTreeNode *newItem;
+	SimpleTreeNode * newItem = nil;
 
 	[self switchResponders];
 	[self touch];
@@ -832,7 +832,7 @@ itemForPersistentObject:(id)data
 	[browser selectItems:itemsToSelect byExtendingSelection: NO];
 	if (![pboard availableTypeFromArray:[NSArray arrayWithObject:DragDropSimplePboardType]]) {
 		// we inserted a string and its item still has to get a meaningful name, so switch on editing
-		[browser editColumn:0 row:[browser rowForItem:newItem] withEvent:nil 	select:YES];
+		[browser editColumn:0 row:[browser rowForItem:newItem] withEvent:nil select:YES];
 	}
 }
 
@@ -1014,8 +1014,8 @@ itemForPersistentObject:(id)data
 //
 - (void) didEndAskForPassphrase:(NSWindow *) sheet returnCode: (NSInteger) returnCode contextInfo:(void*) infos
 {
-	NSDictionary		* dict;
-	NSString				* pwd = [passphraseSheetPassphraseTextField stringValue];
+	NSDictionary * dict = nil;
+	NSString * pwd = [passphraseSheetPassphraseTextField stringValue];
 
 	[passphraseSheetPassphraseTextField setStringValue:@""];
 

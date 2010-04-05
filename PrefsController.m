@@ -51,7 +51,7 @@
 
 - (void) showWindow:(id) sender
 {
-	GPGTask * secKeyTask;
+	// GPGTask * secKeyTask;
 	NSString * path = [PREFS stringForKey:GPGPathKey];
 
 	// set up 'show icons'
@@ -80,7 +80,7 @@
 			name:@"GPGKeysReady"
 				 object:nil];
 
-	secKeyTask = [[GPGTask alloc] initForListingKeysPrivate:YES withColons:YES onlyMainKeys:NO];
+	// secKeyTask = [[GPGTask alloc] initForListingKeysPrivate:YES withColons:YES onlyMainKeys:NO];
 
 	[super showWindow:sender];
 }
@@ -101,8 +101,7 @@
 	// the first two lines of the output are
 	// /Users/ssp/.gnupg/secring.gpg
 
-#warning 64BIT: Check formatting arguments
-	NSLog([stringArray description]);
+	NSLog(@"%@", [stringArray description]);
 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
@@ -123,7 +122,7 @@
 		while (s = [myEnumerator nextObject]){
 			// ignore empty lines
 			if ([s length] > 10 ) {
-				myKey = [[Key alloc] initWithWithColonsString:s];
+				myKey = [[[Key alloc] initWithWithColonsString:s] autorelease];
 				if (myKey) {
 					[privateKeyPopupMenu addItemWithTitle:[myKey longDescription]];
 					[[privateKeyPopupMenu lastItem] setRepresentedObject:[myKey keyid]];

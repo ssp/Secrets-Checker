@@ -74,11 +74,11 @@
 	[keyTask setArguments:[NSArray arrayWithObjects:@"-c", [gpgPath stringByAppendingString:@" --list-secret-keys --with-colons --charset utf-8 | grep ^sec"],nil]];
 	[cipherTask setArguments:[NSArray arrayWithObjects:@"-c", [gpgPath stringByAppendingString:@" --version --charset utf-8 | grep ^Cipher"],nil]];
 
-#ifdef debugbuild
-#else
+// #ifdef debugbuild
+// #else
 	[keyTask launch];
 	[cipherTask launch];
-#endif
+// #endif
 	
 	// pro forma intialisation of the arrays
 	[self setCipherAlgorithms:[NSArray array]];
@@ -89,11 +89,10 @@
 
 - (void) keyTaskFinished:(NSNotification*) aNotification
 {
-	NSString *		result =  [[NSString alloc] initWithData:[[[[aNotification object] standardOutput] fileHandleForReading] readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+	NSString * result =  [[[NSString alloc] initWithData:[[[[aNotification object] standardOutput] fileHandleForReading] readDataToEndOfFile] encoding:NSUTF8StringEncoding] autorelease];
 	NSArray * 		keylines = [result componentsSeparatedByString:@"\n"];
 	NSEnumerator*	myEnum = [keylines objectEnumerator];
 	NSString *		s;
-//	NSArray *		a;
 	NSMutableArray* keys = [NSMutableArray arrayWithCapacity:[keylines count]];
 	
 	// output are lines of
@@ -107,16 +106,13 @@
 
 	[self setPrivateKeys:keys];
 
-	[result release];
-	[[aNotification object] release];
-
 	debugLog(@"Data: received Keys");
 }
 
 
 - (void) cipherTaskFinished:(NSNotification*) aNotification
 {
-	NSString * 		result = [[NSString alloc] initWithData:[[[[aNotification object] standardOutput] fileHandleForReading] readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+	NSString * result = [[[NSString alloc] initWithData:[[[[aNotification object] standardOutput] fileHandleForReading] readDataToEndOfFile] encoding:NSUTF8StringEncoding] autorelease];
 	// output looks like
 	// Cipher: 3DES, CAST5, BLOWFISH, RIJNDAEL, RIJNDAEL192, RIJNDAEL256, TWOFISH
 	// 012345678
@@ -125,9 +121,6 @@
 
 	[self setCipherAlgorithms:ciphers];
 	
-	[result release];
-	[[aNotification object] release];
-
 	debugLog(@"Data: received Ciphers");
 }
 

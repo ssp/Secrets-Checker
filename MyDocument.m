@@ -311,32 +311,37 @@
 
 - (NSString *) dataWithPublicKeyEncryption
 {
-	NSTask			* task = [[NSTask alloc] init];
+	NSTask			* task;
 	NSPipe			* inPipe = [NSPipe pipe];
 	NSPipe			* outPipe = [NSPipe pipe];
 	NSFileHandle	* fHandle;
 	NSString			* key = [self keyID];
 	NSString			* path = [PREFS stringForKey:GPGPathDefault];
 
-	if (!(key && path)) return nil;
-
-	[task setArguments:[NSArray arrayWithObjects:
-		@"--no-options", @"--encrypt", @"--recipient", key, @"--armor", @"--batch", @"--yes", @"--charset", @"utf-8", @"--no-version", @"--no-comment", nil]];
-	[task setStandardInput:inPipe];
-	[task setStandardOutput:outPipe];
-	[task setLaunchPath:path];
-
-	[task launch];
-
-	fHandle = [inPipe fileHandleForWriting];
-	[fHandle writeData:[[[treeData arrayForTree] description] dataUsingEncoding:NSUTF8StringEncoding]];
-	[fHandle closeFile];
+	NSString * result = nil;
 	
-	[task waitUntilExit];
-	if ([task terminationStatus]) return nil;
-	[task release];
-
-	return [[[NSString alloc] initWithData:[[outPipe fileHandleForReading] readDataToEndOfFile] encoding:NSUTF8StringEncoding] autorelease];	
+	if (key && path) {
+		task = [[NSTask alloc] init];
+		[task setArguments:[NSArray arrayWithObjects:
+		@"--no-options", @"--encrypt", @"--recipient", key, @"--armor", @"--batch", @"--yes", @"--charset", @"utf-8", @"--no-version", @"--no-comment", nil]];
+		[task setStandardInput:inPipe];
+		[task setStandardOutput:outPipe];
+		[task setLaunchPath:path];
+		
+		[task launch];
+		
+		fHandle = [inPipe fileHandleForWriting];
+		[fHandle writeData:[[[treeData arrayForTree] description] dataUsingEncoding:NSUTF8StringEncoding]];
+		[fHandle closeFile];
+		
+		[task waitUntilExit];
+		if ([task terminationStatus] == 0) {
+			result = [[[NSString alloc] initWithData:[[outPipe fileHandleForReading] readDataToEndOfFile] encoding:NSUTF8StringEncoding] autorelease];			
+		}
+		[task release];
+	}
+	
+	return result;	
 }
 
 
