@@ -156,6 +156,7 @@
 	if (![[filterField stringValue] isEqualToString:@""]){
 		[self changeFilterTo:[filterField stringValue]];
 	}
+	[[self window] makeFirstResponder:filterField];
 }
 
 - (void)drawerWillClose:(NSNotification *)notification
