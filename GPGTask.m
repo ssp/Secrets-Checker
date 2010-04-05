@@ -492,11 +492,9 @@
 //
 - (NSString*) nextCommandInBuffer
 {
-	//unsigned *	start;
-	//unsigned *	end;
-	NSString *	s;
-	NSRange		r;
-	int			a;
+	NSString * s;
+	NSRange	r;
+	NSUInteger a;
 
 	a = [statusBuffer rangeOfString:@"\n" options:NSBackwardsSearch].location;
 	
