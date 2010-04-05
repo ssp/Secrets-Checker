@@ -56,9 +56,11 @@
 	debugLog(@"[Data init]");
 
 	// load images
-	documentMiniIcon = [[NSImage imageNamed:@"MiniDocument"] retain];
-	folderMiniIcon = [[NSImage imageNamed:@"MiniFolder"] retain];
-
+	documentMiniIcon = [[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kClippingTextTypeIcon)] retain];
+	[documentMiniIcon setSize: NSMakeSize(16., 16.)];
+	folderMiniIcon = [[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericFolderIcon)] retain];
+	[folderMiniIcon setSize: NSMakeSize(16., 16.)];
+	
 	// run tasks
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyTaskFinished:) name:NSTaskDidTerminateNotification object:keyTask];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cipherTaskFinished:) name:NSTaskDidTerminateNotification object:cipherTask];
