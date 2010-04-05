@@ -62,6 +62,7 @@
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		6C971BAD0E5D8B5000A2EE31 /* Info-Secrets_Checker__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Secrets_Checker__Upgraded_.plist"; sourceTree = "<group>"; };
 		6C971BAE0E5D8B5000A2EE31 /* Secrets Checker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secrets Checker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CDD8A99116A3DA800A901A0 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		F5258DA30242813B01F156A7 /* MyDocWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocWindowController.h; sourceTree = "<group>"; };
 		F527E00702429ED801A03BFB /* SimpleTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTreeNode.h; sourceTree = "<group>"; };
 		F527E00802429ED801A03BFB /* SimpleTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTreeNode.m; sourceTree = "<group>"; };
@@ -142,6 +143,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* Secrets Checker */ = {
 			isa = PBXGroup;
 			children = (
+				6CDD8A99116A3DA800A901A0 /* README.markdown */,
 				F56261BB024D4A9C016DC693 /* To Do.text */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				F527E00602429EAA01A03BFB /* Tree */,
