@@ -65,9 +65,9 @@
 - (void) setTreeData:(SimpleTreeNode*) node;
 
 - (NSString*) encryptionType;
-- (int) encryptionTypeAsInt;
+- (NSInteger) encryptionTypeAsInt;
 - (void) setEncryptionType:(NSString*) type;
-- (void) setEncryptionTypeByInt:(int) nr;
+- (void) setEncryptionTypeByInt:(NSInteger) nr;
 
 - (NSString*) keyID;
 - (void) setKeyID:(NSString*) ID;

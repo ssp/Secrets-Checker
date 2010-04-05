@@ -17,7 +17,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under AppleÕs copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Appleâ€™s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -50,20 +50,23 @@
 
 - (NSArray*)allSelectedItems {
     NSMutableArray *items = [NSMutableArray array];
-    NSEnumerator *selectedRows = [self selectedRowEnumerator];
-    NSNumber *selRow = nil;
-    while( (selRow = [selectedRows nextObject]) ) {
-        if ([self itemAtRow:[selRow intValue]]) 
-            [items addObject: [self itemAtRow:[selRow intValue]]];
-    }
+    NSIndexSet *selectedRows = [self selectedRowIndexes];
+	NSInteger currentIndex = [selectedRows indexGreaterThanIndex: -1];
+	
+	while ( currentIndex != NSNotFound ) {
+		if ([self itemAtRow: currentIndex]) 
+            [items addObject: [self itemAtRow:currentIndex]];
+		currentIndex = [selectedRows indexGreaterThanIndex: currentIndex];
+	}
+	
     return items;
 }
 
 - (void)selectItems:(NSArray*)items byExtendingSelection:(BOOL)extend {
-    int i;
+    NSInteger i;
     if (extend==NO) [self deselectAll:nil];
     for (i=0;i<[items count];i++) {
-        int row = [self rowForItem:[items objectAtIndex:i]];
+        NSInteger row = [self rowForItem:[items objectAtIndex:i]];
         if(row>=0) [self selectRow: row byExtendingSelection:YES];
     }
 }
@@ -84,7 +87,7 @@
 	[super keyDown:theEvent];
 //	debugLog(@"[MyOutlineView keyDown]")
 	if ([theEvent modifierFlags] & NSFunctionKeyMask) {
-		debugLog(@"!!!")
+		debugLog(@"!!!");
 		[[NSNotificationCenter defaultCenter] postNotificationName:NSOutlineViewSelectionDidChangeNotification object:self];
 
 	}

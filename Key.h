@@ -22,7 +22,7 @@
 - (NSString *) name;
 - (NSString *) email;
 
-- (int) algorithm;
+- (NSInteger) algorithm;
 - (NSString *) algorithmAsString;
 
 - (NSString *) longDescription;
@@ -30,19 +30,19 @@
 - (NSString *) type;
 - (NSString *) keyid;
 - (NSString *) shortid;
-- (int) keylength;
+- (NSInteger) keylength;
 
 - (NSDate *) creationDate;
 - (NSDate *) expiryDate;
 
-- (int) localid;
+- (NSInteger) localid;
 - (NSString *) ownertrust;
 - (NSString *) trust;
 - (NSString *) trustDescription;
 - (NSString *) capabilities;
 
 // deal with subkeys
-- (int) subkeyCount;
+- (NSInteger) subkeyCount;
 - (BOOL) hasSubkeyWithID:(NSString*) ID;
 
 //- (NSString *) longDescription;

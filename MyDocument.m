@@ -17,13 +17,13 @@
 
 - (NSString*) encryptionType { return encryptionType;}
 - (void) setEncryptionType:(NSString*) type {[encryptionType release]; encryptionType = [type retain];}
-- (int) encryptionTypeAsInt
+- (NSInteger) encryptionTypeAsInt
 {
 	if ([encryptionType isEqual:SCSymmetricEncryptionKey]) {return SCSymmetricEncryption;}
 	else if ([encryptionType isEqual:SCPublicKeyEncryptionKey]) {return SCPublicKeyEncryption;}
 	else {return SCNoEncryption;}
 }
-- (void) setEncryptionTypeByInt:(int) nr
+- (void) setEncryptionTypeByInt:(NSInteger) nr
 {
 	switch (nr) {
 		case SCSymmetricEncryption: [self setEncryptionType:SCSymmetricEncryptionKey]; break;
@@ -114,7 +114,7 @@
 
 - (void)windowControllerDidLoadNib:(NSWindowController *) aController
 {
-	debugLog(@"[MyDocument windowControllerDidLoadNib]")
+	debugLog(@"[MyDocument windowControllerDidLoadNib]");
     [super windowControllerDidLoadNib:aController];
     // Add any code here that need to be executed once the windowController has loaded the document's window.
 }
@@ -122,9 +122,9 @@
 
 - (void)makeWindowControllers
 {
-	debugLog(@"[MyDocument makeWindowControllers]")
+	debugLog(@"[MyDocument makeWindowControllers]");
 	if (![[self windowControllers] count]) {
-		debugLog(@"making...")
+		debugLog(@"making...");
 		[self addWindowController:[[MyDocWindowController alloc] init]];
 	}
 }
@@ -240,7 +240,7 @@
 
 - (NSData *)dataRepresentationOfType:(NSString *)aType
 {
-	debugLog(@"[MyDocument dataRepresentationOfType]")
+	debugLog(@"[MyDocument dataRepresentationOfType]");
 	return([super dataRepresentationOfType:aType]);
 }
 
@@ -250,7 +250,7 @@
 	NSMutableDictionary * myDict = [NSMutableDictionary dictionaryWithCapacity:11];
 	NSString * encType = [self encryptionType];
 
-	debugLog(@"[MyDocument writeToFile:ofType:]")
+	debugLog(@"[MyDocument writeToFile:ofType:]");
 
 	// make sure the data is up-to-date
 	[[[self windowControllers] objectAtIndex:0] switchResponders];
@@ -351,7 +351,7 @@
 	NSString			* path = [PREFS stringForKey:GPGPathDefault];
 	NSMutableArray	*options = [NSMutableArray arrayWithObjects:@"--symmetric",  @"--command-fd", @"0", @"--charset", @"utf-8", @"--no-version", @"--no-comment", @"--armor", @"--no-tty", nil];
 
-	debugLog(@"[MyDocWindowController dataWithSymmetricEncryption]")
+	debugLog(@"[MyDocWindowController dataWithSymmetricEncryption]");
 	
 	if (![PREFS boolForKey:GPGUsesOwnOptionsKey]) {
 		[options addObject:@"--no-options"];

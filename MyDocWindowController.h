@@ -132,7 +132,7 @@
 - (void) changeFilterTo:(NSString*) newFilter;
 
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild;
-- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(int)childIndex;
+- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(NSInteger)childIndex;
 
 - (NSString*) previousEncryptionType;
 - (void) setPreviousEncryptionType:(NSString*) type;

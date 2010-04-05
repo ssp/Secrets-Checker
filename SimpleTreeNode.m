@@ -17,7 +17,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under AppleÕs copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Appleâ€™s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -161,10 +161,9 @@
 	return [NSString stringWithFormat:@"%@:\n%@\n",name,secret];
 }
 
-- (NSComparisonResult)compare:(TreeNodeData*)other {
+- (NSComparisonResult) compare:(SimpleNodeData*)other {
     // We want the data to be sorted by name, so we compare [self name] to [other name]
-    SimpleNodeData *_other = other;
-    return [name compare: [_other name]];
+    return [name compare: [other name]];
 }
 
 @end
@@ -190,7 +189,7 @@
 			child = [SimpleTreeNode treeFromArray:[myDict objectForKey:SCDataItemsKey]];
 			myData = (SimpleNodeData*)[child nodeData];
 			[myData setName:[myDict objectForKey:SCDataNameKey]];
-			[myData setIsExpanded:[[myDict objectForKey:SCGroupIsExpandedKey] intValue]];
+			[myData setIsExpanded:[[myDict objectForKey:SCGroupIsExpandedKey] integerValue]];
 		}
 		else {
 			// otherwise this is a secret, so
@@ -218,7 +217,7 @@
 	SimpleTreeNode *result, *child;
 	SimpleNodeData *data;
 
-	debugLog(([NSString stringWithFormat:@"nodeWithPath: %@",path]))
+	debugLog(@"nodeWithPath: %@", path);
 	
 	if ([fm fileExistsAtPath:path isDirectory:&isDir] && isDir) {
 		// the path points to a folder
@@ -235,9 +234,11 @@
 	}
 	else {
 		NSDictionary *attributes = [fm fileAttributesAtPath:path traverseLink:YES];
-		if ([fm fileExistsAtPath:path] && ([[attributes objectForKey:NSFileSize] intValue] < SCMaxImportFileSize)) {
+		if ([fm fileExistsAtPath:path] && ([[attributes objectForKey:NSFileSize] integerValue] < SCMaxImportFileSize)) {
 			// the file exists and is reasonably small.
-			data = [SimpleNodeData leafDataWithName:[path lastPathComponent] andSecret:[NSString stringWithContentsOfFile:path]];
+			NSStringEncoding myEncoding;
+			NSError * myError = nil;
+			data = [SimpleNodeData leafDataWithName:[path lastPathComponent] andSecret:[NSString stringWithContentsOfFile:path usedEncoding: &myEncoding error: &myError]];
 			result =[[SimpleTreeNode alloc] initWithData:data parent:nil children:[NSArray array]];
 		}
 		else {

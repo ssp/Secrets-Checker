@@ -53,7 +53,7 @@
 	NSTask *		cipherTask = [[NSTask alloc] init];
 	NSString *	gpgPath = [[NSUserDefaults standardUserDefaults] stringForKey:GPGPathKey];
 
-	debugLog(@"[Data init]")
+	debugLog(@"[Data init]");
 
 	// load images
 	documentMiniIcon = [[NSImage imageNamed:@"MiniDocument"] retain];
@@ -108,7 +108,7 @@
 	[result release];
 	[[aNotification object] release];
 
-	debugLog(@"Data: received Keys")
+	debugLog(@"Data: received Keys");
 }
 
 
@@ -126,7 +126,7 @@
 	[result release];
 	[[aNotification object] release];
 
-	debugLog(@"Data: received Ciphers")
+	debugLog(@"Data: received Ciphers");
 }
 
 

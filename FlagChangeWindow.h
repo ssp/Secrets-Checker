@@ -13,7 +13,7 @@
 	IBOutlet id		capsLockIndicatorTextField;
 }
 
-- (void) indicateCapsLock:(int) capsLock;
+- (void) indicateCapsLock:(NSInteger) capsLock;
 
 - (void)becomeKeyWindow;
 

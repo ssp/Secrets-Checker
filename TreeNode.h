@@ -27,19 +27,19 @@
 - (void)setNodeParent:(TreeNode*)parent;
 - (TreeNode*)nodeParent;
 
-- (void)insertChild:(TreeNode*)child atIndex:(int)index;
-- (void)insertChildren:(NSArray*)children atIndex:(int)index;
+- (void)insertChild:(TreeNode*)child atIndex:(NSInteger)index;
+- (void)insertChildren:(NSArray*)children atIndex:(NSInteger)index;
 - (void)removeChild:(TreeNode*)child;
 - (void)removeFromParent;
 
-- (int)indexOfChild:(TreeNode*)child;
-- (int)indexOfChildIdenticalTo:(TreeNode*)child;
+- (NSInteger)indexOfChild:(TreeNode*)child;
+- (NSInteger)indexOfChildIdenticalTo:(TreeNode*)child;
 
-- (int)numberOfChildren;
+- (NSInteger)numberOfChildren;
 - (NSArray*)children;
 - (TreeNode*)firstChild;
 - (TreeNode*)lastChild;
-- (TreeNode*)childAtIndex:(int)index;
+- (TreeNode*)childAtIndex:(NSInteger)index;
 
 - (BOOL)isDescendantOfNode:(TreeNode*)node;
     // returns YES if 'node' is an ancestor.

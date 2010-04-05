@@ -18,7 +18,7 @@
     [super sendEvent:event];
 }
 
-- (void) indicateCapsLock:(int) capsLock
+- (void) indicateCapsLock:(NSInteger) capsLock
 {
 	//NSLog(@"capsLock: %d", capsLock);
 	if (capsLock) {

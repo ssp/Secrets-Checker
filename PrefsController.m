@@ -5,7 +5,7 @@
 // called when checkbox is clicked
 - (IBAction)showIconsChange:(id)sender
 {
-	[PREFS setBool:[sender intValue] forKey:SCDisplayIcons];
+	[PREFS setBool:[sender integerValue] forKey:SCDisplayIcons];
 	[NOTCENTER postNotificationName:SCRefreshBrowserNotification object:self];
 	[PREFS synchronize];
 }
@@ -55,7 +55,7 @@
 	NSString * path = [PREFS stringForKey:GPGPathKey];
 
 	// set up 'show icons'
-	[showIconsCheckbox setIntValue:[PREFS boolForKey:SCDisplayIcons]];
+	[showIconsCheckbox setIntegerValue:[PREFS boolForKey:SCDisplayIcons]];
 	
 	// set up popup buttons
 	if (path) {
@@ -101,12 +101,13 @@
 	// the first two lines of the output are
 	// /Users/ssp/.gnupg/secring.gpg
 
+#warning 64BIT: Check formatting arguments
 	NSLog([stringArray description]);
 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	
-	if ([[info objectForKey:@"usingWithColons"] intValue] && [[info objectForKey:@"keysArePrivate"] intValue] && [stringArray count]) {
+	if ([[info objectForKey:@"usingWithColons"] integerValue] && [[info objectForKey:@"keysArePrivate"] integerValue] && [stringArray count]) {
 
 		// empty Menu and activate the control
 		[privateKeyPopupMenu setEnabled:YES];

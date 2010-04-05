@@ -100,13 +100,14 @@
 
 - (NSString *) longDescription
 {
+#warning 64BIT: Check formatting arguments
 	return [NSString stringWithFormat:@"%@ (ID %@, %@ %d bit)", [self userid], [self shortid], [self algorithmAsString], [self keylength]];
 }
 
 
--(int) algorithm
+-(NSInteger) algorithm
 {
-	return [[mainKeyParts objectAtIndex:2] intValue];
+	return [[mainKeyParts objectAtIndex:2] integerValue];
 }
 
 
@@ -125,13 +126,14 @@
 - (NSString *) type
 {
 	// NSLog(@"%@ %d bit", [self algorithmAsString], [self keylength]);
+#warning 64BIT: Check formatting arguments
 	return [NSString stringWithFormat:@"%@ %d bit", [self algorithmAsString], [self keylength]];
 }
 
 
-- (int) keylength
+- (NSInteger) keylength
 {
-	return [[mainKeyParts objectAtIndex:1] intValue];
+	return [[mainKeyParts objectAtIndex:1] integerValue];
 }
 
 
@@ -173,9 +175,9 @@
 }
 
 
-- (int) localid
+- (NSInteger) localid
 {
-	return [[mainKeyParts objectAtIndex:6] intValue];
+	return [[mainKeyParts objectAtIndex:6] integerValue];
 }
 
 
@@ -225,7 +227,7 @@
 //
 // DEAL WITH SUBKEYS
 //
-- (int) subkeyCount
+- (NSInteger) subkeyCount
 {
 	return [subkeys count];
 }
@@ -238,6 +240,7 @@
 	// NSLog([subkeys description]);
 
 	while ((myItem = [myEnum nextObject]) && ![myItem isEqual:@""] ) {
+#warning 64BIT: Check formatting arguments
 		NSLog(myItem);
 		myArray = [myItem componentsSeparatedByString:@":"];
 		if ([[myArray objectAtIndex:4] isEqual:ID]) {

@@ -22,7 +22,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under AppleÕs copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Appleâ€™s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -106,12 +106,12 @@
     return nodeParent; 
 }
 
-- (void)insertChild:(TreeNode*)child atIndex:(int)index {
+- (void)insertChild:(TreeNode*)child atIndex:(NSInteger)index {
     [nodeChildren insertObject:child atIndex:index];
     [child setNodeParent: self];
 }
 
-- (void)insertChildren:(NSArray*)children atIndex:(int)index {
+- (void)insertChildren:(NSArray*)children atIndex:(NSInteger)index {
     [nodeChildren insertObjectsFromArray: children atIndex: index];
     [children makeObjectsPerformSelector:@selector(setNodeParent:) withObject:self];
 }
@@ -126,7 +126,7 @@
 }
 
 - (void)removeChild:(TreeNode*)child {
-    int index = [self indexOfChild: child];
+    NSInteger index = [self indexOfChild: child];
     if (index!=NSNotFound) {
         [self _removeChildrenIdenticalTo: [NSArray arrayWithObject: [self childAtIndex:index]]];
     }
@@ -136,15 +136,15 @@
     [[self nodeParent] removeChild:self];
 }
 
-- (int)indexOfChild:(TreeNode*)child {
+- (NSInteger)indexOfChild:(TreeNode*)child {
     return [nodeChildren indexOfObject:child];
 }
 
-- (int)indexOfChildIdenticalTo:(TreeNode*)child {
+- (NSInteger)indexOfChildIdenticalTo:(TreeNode*)child {
     return [nodeChildren indexOfObjectIdenticalTo:child];
 }
 
-- (int)numberOfChildren {
+- (NSInteger)numberOfChildren {
     return [nodeChildren count];
 }
 
@@ -160,7 +160,7 @@
     return [nodeChildren lastObject];
 }
 
-- (TreeNode*)childAtIndex:(int)index {
+- (TreeNode*)childAtIndex:(NSInteger)index {
     return [nodeChildren objectAtIndex:index];
 }
 

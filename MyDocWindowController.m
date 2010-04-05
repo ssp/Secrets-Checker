@@ -47,7 +47,7 @@
 
 - (void)textDidEndEditing:(NSNotification *)aNotification
 {
-	debugLog(@"[MyDocWindowController textDidEndEditing]")
+	debugLog(@"[MyDocWindowController textDidEndEditing]");
 	[self touch];
 	[currentItem setSecret:[[[textField string] copy] autorelease]];
 }
@@ -56,7 +56,7 @@
 - (IBAction) changeEncryptionType:(id) sender
 {
 //	int 	nr= [[sender selectedItem] tag];
-	int	nr = [sender tag];
+	NSInteger	nr = [sender tag];
 	[self setPreviousEncryptionType:[[self document] encryptionType]];
 	[[self document] setEncryptionTypeByInt:nr];
 
@@ -91,7 +91,7 @@
 
 - (IBAction) changeSelection:(id) sender
 {
-	debugLog(@"changeSelection")
+	debugLog(@"changeSelection");
 /*
 	// This message is sent from the outlineView as it's action (see the connection in IB).
 	NSArray *selectedNodes = [self selectedNodes];
@@ -171,13 +171,13 @@
 
 - (IBAction) switchDisplayFolders:(id) sender
 {
-	[[self document] setFilterIncludeFolders:[sender intValue]];
+	[[self document] setFilterIncludeFolders:[sender integerValue]];
 	[self changeFilterTo:[filterField stringValue]];
 }
 
 - (IBAction) switchLabelsOnly:(id) sender
 {
-	[[self document] setFilterSearchLabelsOnly:[sender intValue]];
+	[[self document] setFilterSearchLabelsOnly:[sender integerValue]];
 	[self changeFilterTo:[filterField stringValue]];
 }
 
@@ -234,7 +234,7 @@
 	[sp beginSheetForDirectory:nil file:NSLocalizedString(@"Exported Secrets", @"Exported Secrets Default Filename") modalForWindow:[self window] modalDelegate:self didEndSelector:@selector(savePanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
-- (void)savePanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void  *)contextInfo;
+- (void)savePanelDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void  *)contextInfo;
 {
 	id resultObject;
 	NSArray* items = ([[self selectedNodes] count]) ? [self selectedNodes] : [[self currentData] children];
@@ -242,9 +242,9 @@
 
 	
 	if (returnCode == NSOKButton) {
-		int selectedFormat = [[exportFormatPopup selectedItem] tag];
+		NSInteger selectedFormat = [[exportFormatPopup selectedItem] tag];
 		NSString * path =[(NSSavePanel*)sheet filename];
-		debugLog(path)
+		debugLog(@"%@", path);
 			
 		if (selectedFormat == 0) {
 			// SC Property List
@@ -306,11 +306,11 @@
 
 
 
-- (void) symmetricSheetEnded:(NSWindow *) sheet returnCode:(int) returnCode contextInfo:(void*) contextInfo
+- (void) symmetricSheetEnded:(NSWindow *) sheet returnCode:(NSInteger) returnCode contextInfo:(void*) contextInfo
 {
-	NSString *			type;
+	NSString * type;
 
-	NSLog(@"symmetricSheetEnded with returnCode:%d", returnCode);
+	debugLog(@"symmetricSheetEnded with returnCode: %u", returnCode);
 
 	if (returnCode == 1) {
 		// sheet was cancelled
@@ -451,7 +451,7 @@
 }
 
 
-- (void) publicKeySheetEnded:(NSWindow *) sheet returnCode:(int) returnCode contextInfo:(void*) contextInfo
+- (void) publicKeySheetEnded:(NSWindow *) sheet returnCode:(NSInteger) returnCode contextInfo:(void*) contextInfo
 {
 	NSString *			type;
 
@@ -505,7 +505,7 @@
 // ================================================================
 
 // Required methods.
-- (id)outlineView:(NSOutlineView *)olv child:(int)index ofItem:(id)item {
+- (id)outlineView:(NSOutlineView *)olv child:(NSInteger)index ofItem:(id)item {
 	return [SAFENODE(item) childAtIndex:index];
 }
 
@@ -520,7 +520,7 @@
 	return isGroup;
 }
 
-- (int)outlineView:(NSOutlineView *)olv numberOfChildrenOfItem:(id)item {
+- (NSInteger)outlineView:(NSOutlineView *)olv numberOfChildrenOfItem:(id)item {
 //	NSLog(@"noC: %i",[SAFENODE(item) numberOfChildren]);
 	return [SAFENODE(item) numberOfChildren];
 }
@@ -695,7 +695,7 @@ itemForPersistentObject:(id)data
 
 
 
-- (unsigned int)outlineView:(NSOutlineView*)olv validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(int)childIndex {
+- (NSUInteger)outlineView:(NSOutlineView*)olv validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex {
 	// This method validates whether or not the proposal is a valid one. Returns NO if the drop should not be allowed.
 	SimpleTreeNode *targetNode = item;
 	BOOL targetNodeIsValid = YES;
@@ -729,7 +729,7 @@ itemForPersistentObject:(id)data
 
 
 
-- (BOOL)outlineView:(NSOutlineView*)olv acceptDrop:(id <NSDraggingInfo>)info item:(id)targetItem childIndex:(int)childIndex {
+- (BOOL)outlineView:(NSOutlineView*)olv acceptDrop:(id <NSDraggingInfo>)info item:(id)targetItem childIndex:(NSInteger)childIndex {
 	TreeNode * 		parentNode = nil;
 
 	// Determine the parent to insert into and the child index to insert at.
@@ -752,7 +752,7 @@ itemForPersistentObject:(id)data
 
 
 
-- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(int)childIndex {
+- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(NSInteger)childIndex {
 	// Helper method to insert dropped data into the model.
 	NSPasteboard * pboard = [info draggingPasteboard];
 	NSMutableArray * itemsToSelect = nil;
@@ -813,7 +813,7 @@ itemForPersistentObject:(id)data
 			[NSApp beginSheet:importOptionsSheet modalForWindow:[self window] modalDelegate:self didEndSelector:@selector(didEndImportOptions:returnCode:contextInfo:) contextInfo:[[NSDictionary dictionaryWithObjectsAndKeys:
 				[filenamesArray objectAtIndex:0], @"path",
 				parentNode, @"parentNode",
-				[NSNumber numberWithInt:childIndex], @"childIndex", nil] retain]];
+				[NSNumber numberWithInteger:childIndex], @"childIndex", nil] retain]];
 		}
 	}
 	else if ([pboard availableTypeFromArray:[NSArray arrayWithObject: NSStringPboardType]]) {
@@ -837,7 +837,7 @@ itemForPersistentObject:(id)data
 
 
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild {
-	int childIndex = 0, newRow = 0;
+	NSInteger childIndex = 0, newRow = 0;
 	NSArray *selectedNodes = [self selectedNodes];
 	SimpleTreeNode *selectedNode = ([selectedNodes count] ? [selectedNodes objectAtIndex:0] : [[self document] treeData]);
 	TreeNode *parentNode = nil;
@@ -883,7 +883,7 @@ itemForPersistentObject:(id)data
 	[NSApp endSheet:importOptionsSheet returnCode:0]; 
 }
 
-- (void) didEndImportOptions:(NSWindow *) sheet returnCode:(int) returnCode contextInfo:(void*) contextInfo
+- (void) didEndImportOptions:(NSWindow *) sheet returnCode:(NSInteger) returnCode contextInfo:(void*) contextInfo
 {
 	SimpleTreeNode * newNode;
 	NSMutableArray * newItems = [NSMutableArray array];
@@ -946,7 +946,7 @@ itemForPersistentObject:(id)data
 			NS_ENDHANDLER	
 		}
 
-		[[infoDict objectForKey:@"parentNode"] insertChildren:newItems atIndex:[[infoDict objectForKey:@"childIndex"] intValue]];
+		[[infoDict objectForKey:@"parentNode"] insertChildren:newItems atIndex:[[infoDict objectForKey:@"childIndex"] integerValue]];
 
 		[browser reloadData];
 		[browser selectItems:newItems byExtendingSelection: NO];
@@ -968,7 +968,7 @@ itemForPersistentObject:(id)data
 	NSString 		* s = [myDict objectForKey:GPGTaskKeyID];
 // Key				* myKey = [[Data Data] keyOwningSubkeyWithID:myKeyID];
 
-	debugLog(@"[MyDocWindowController askForPassphrase:]")
+	debugLog(@"[MyDocWindowController askForPassphrase:]");
 
 	if (s) {
 		// case for public key encryption
@@ -1011,7 +1011,7 @@ itemForPersistentObject:(id)data
 //
 // called when the passphrase sheet has finished.
 //
-- (void) didEndAskForPassphrase:(NSWindow *) sheet returnCode: (int) returnCode contextInfo:(void*) infos
+- (void) didEndAskForPassphrase:(NSWindow *) sheet returnCode: (NSInteger) returnCode contextInfo:(void*) infos
 {
 	NSDictionary		* dict;
 	NSString				* pwd = [passphraseSheetPassphraseTextField stringValue];
@@ -1090,8 +1090,8 @@ itemForPersistentObject:(id)data
 //	[encryptionPopup selectItemAtIndex:[d encryptionTypeAsInt]];
 
 	// filter drawer
-	[filterShowFoldersCheckBox setIntValue:[d filterIncludeFolders]];
-	[filterLabelsOnlyCheckBox setIntValue:[d filterSearchLabelsOnly]];
+	[filterShowFoldersCheckBox setIntegerValue:[d filterIncludeFolders]];
+	[filterLabelsOnlyCheckBox setIntegerValue:[d filterSearchLabelsOnly]];
 	if ([d filterDrawerIsOpen]) [filterDrawer open];
 	
 	[super showWindow:sender];
@@ -1101,7 +1101,7 @@ itemForPersistentObject:(id)data
 
 
 
-- (BOOL)validateMenuItem:(id <NSMenuItem>)menuItem {
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
 	SEL act = [menuItem action];
 	
 	if (act == @selector(deleteItem:)) {
@@ -1130,20 +1130,20 @@ itemForPersistentObject:(id)data
 			// there is a selection
 			if ([currentFilter isEqualToString:@""]) {
 				// no filter
-				[menuItem setTitle:NSLocalizedString(@"Export Selection…", @"Export Selection…")];
+				[menuItem setTitle:NSLocalizedString(@"Export Selection‚Ä¶", @"Export Selection‚Ä¶")];
 			}
 			else {
-				[menuItem setTitle:NSLocalizedString(@"Export Filtered Selection…", @"Export Filtered Selection…")];
+				[menuItem setTitle:NSLocalizedString(@"Export Filtered Selection‚Ä¶", @"Export Filtered Selection‚Ä¶")];
 			}
 		}
 		else {
 			// there is no selection so, simply export
 			if ([currentFilter isEqualToString:@""]) {
 				// no filter
-				[menuItem setTitle:NSLocalizedString(@"Export…", @"Export…")];
+				[menuItem setTitle:NSLocalizedString(@"Export‚Ä¶", @"Export‚Ä¶")];
 			}
 			else {
-				[menuItem setTitle:NSLocalizedString(@"Export Filtered…", @"Export Filtered…")];
+				[menuItem setTitle:NSLocalizedString(@"Export Filtered‚Ä¶", @"Export Filtered‚Ä¶")];
 			}
 		}
 		return YES;
@@ -1189,9 +1189,9 @@ itemForPersistentObject:(id)data
 }
 */
 
-- (float)splitView:(NSSplitView *)sView constrainSplitPosition:(float)proposedPosition ofSubviewAt:(int)offset
+- (CGFloat)splitView:(NSSplitView *)sView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)offset
 {
-	float f = [sView frame].size.width - 100;
+	CGFloat f = [sView frame].size.width - 100;
 	
 	if (proposedPosition < 100 ) return 100;
 	else if (proposedPosition > f) return f;
@@ -1362,7 +1362,7 @@ itemForPersistentObject:(id)data
 
 	if ([[toolbarItem itemIdentifier] isEqualToString:SaveDocToolbarItemIdentifier]) {
 		// We will return YES (ie  the button is enabled) only when the document is dirty and needs saving
-		debugLog(@"validate Save ToolbarItem")
+		debugLog(@"validate Save ToolbarItem");
 		return [[self document] isDocumentEdited];
 	}
 	else if ([[toolbarItem itemIdentifier] isEqualToString:DeleteItemToolbarItemIdentifier]){

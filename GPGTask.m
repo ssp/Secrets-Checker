@@ -48,7 +48,7 @@
 		NSLog(@"<-- %@", string);
 		[statusBuffer appendString:string];
 		while (command = [self nextCommandInBuffer]) {
-			NSLog(command);
+			debugLog(@"%@", command);
 			[self processGPGOutput:command];
 		}
 	}
@@ -275,7 +275,7 @@
 	if ([[components objectAtIndex:2] isEqualToString:@"passphrase.enter"]){
 		// This needs to be given the passphrase provided by the User
 		if (!hadBadPassphrase && userPassphrase) {
-			debugLog(@"GPGTask doGPG_GET_HIDDEN write original passphrase")
+			debugLog(@"GPGTask doGPG_GET_HIDDEN write original passphrase");
 			[self writeToCommandPipe:userPassphrase];
 		}
 		else {
@@ -290,7 +290,7 @@
 				[self sendNotification:GPGTaskBadPassphraseNotification withUserInfo:myDict];
 
 
-				debugLog(@"GPGTask doGPG_GET_HIDDEN sent Notification for passphrase ")
+				debugLog(@"GPGTask doGPG_GET_HIDDEN sent Notification for passphrase ");
 			}
 			else {
 				// nobody is listening to us, so we better stop doing thigs now - the hard way
