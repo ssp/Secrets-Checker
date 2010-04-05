@@ -49,9 +49,9 @@
 - (id)selectedItem { return [self itemAtRow: [self selectedRow]]; }
 
 - (NSArray*)allSelectedItems {
-    NSMutableArray *items = [NSMutableArray array];
     NSIndexSet *selectedRows = [self selectedRowIndexes];
-	NSInteger currentIndex = [selectedRows indexGreaterThanIndex: -1];
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:[selectedRows count]];
+	NSInteger currentIndex = [selectedRows indexGreaterThanOrEqualToIndex: 0];
 	
 	while ( currentIndex != NSNotFound ) {
 		if ([self itemAtRow: currentIndex]) 
