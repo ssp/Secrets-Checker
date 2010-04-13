@@ -37,7 +37,7 @@
 		case SCSymmetricEncryption: [self setEncryptionType:SCSymmetricEncryptionKey]; break;
 		case SCPublicKeyEncryption: [self setEncryptionType:SCPublicKeyEncryptionKey]; break;
 		default: [self setEncryptionType:SCNoEncryptionKey];
-			}
+	}
 }
 
 
@@ -104,24 +104,9 @@
 - (double) browserWidth { return browserWidth;}
 - (void) setBrowserWidth:(double) width {browserWidth = width;}
 
-/*
-- (NSString*) docID {return docID;}
-- (void) setDocID:(NSString*) ID
-{
-	[docID release];
-	docID = [ID retain];
-}
-*/
+
 
 #pragma mark OVERRIDING
-/*
-- (NSString *)windowNibName
-{
-    // Override returning the nib file name of the document
-    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-    return @"MyDocument";
-}
-*/
 
 - (BOOL)prepareSavePanel:(NSSavePanel *)savePanel
 {

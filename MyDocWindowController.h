@@ -39,11 +39,11 @@
 
 
 @interface MyDocWindowController : NSWindowController {
-	IBOutlet	id			browser;
-	IBOutlet id 		textField;
-//	IBOutlet id			encryptionPopup;
-	IBOutlet id			splitView;
-//	IBOutlet id			optionsButton;
+	IBOutlet id browser;
+	IBOutlet id textField;
+//	IBOutlet id	encryptionPopup;
+	IBOutlet id	splitView;
+//	IBOutlet id	optionsButton;
 
 	// for the enter passphrase sheet
 	IBOutlet id passphraseSheet;
@@ -90,8 +90,8 @@
 
 	NSString* currentFilter;
 
-	NSString*		previousEncryptionType;
-	NSArray	 		*draggedNodes;
+	NSString* previousEncryptionType;
+	NSArray* draggedNodes;
 }
 
 

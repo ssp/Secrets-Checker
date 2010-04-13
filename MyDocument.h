@@ -51,8 +51,6 @@
 	
 	NSString				*passphrase;
 	NSString				*passphraseHint;
-
-//	NSString				*docID;
 	
 	double				browserWidth;
 
