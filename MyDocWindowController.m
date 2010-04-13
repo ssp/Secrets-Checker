@@ -195,14 +195,14 @@
 
 - (void) changeFilterTo:(NSString*) newFilter
 {
-	SimpleTreeNode *	root;
+	SimpleTreeNode *	root = nil;
 	MyDocument *		d = [self document];
 	NSArray *			oldSelection = [[[self selectedNodes] copy] autorelease];
 
 	[currentFilter release];
 	currentFilter = [newFilter retain];
 	
-	if ([newFilter length]) {
+	if ([newFilter length] > 0) {
 		// the filter is non-trivial
 		root = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData groupDataWithName:@"root"] parent:nil children:[NSArray array]] autorelease];
 
@@ -218,8 +218,17 @@
 		// re-activate d & d
 		[browser registerForDraggedTypes:SCBrowserAcceptDraggedTypes];
 	}
+
 	[browser reloadData];
-	[browser selectItems:oldSelection byExtendingSelection:NO];
+	
+	// If there is a unique result, select it. Otherwise attempt to preserve the existing selection.
+	if ( [root numberOfChildren] == 1 ) {
+		NSArray * uniqueResult = [NSArray arrayWithObject:[root childAtIndex:0]];
+		[browser selectItems:uniqueResult byExtendingSelection:NO];
+	}
+	else {
+		[browser selectItems:oldSelection byExtendingSelection:NO];		
+	}
 }
 
 
