@@ -42,7 +42,7 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		6C971BAD0E5D8B5000A2EE31 /* Info-Secrets_Checker__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Secrets_Checker__Upgraded_.plist"; sourceTree = "<group>"; };
+		6C971BAD0E5D8B5000A2EE31 /* Info-Secrets_Checker.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Secrets_Checker.plist"; sourceTree = "<group>"; };
 		6C971BAE0E5D8B5000A2EE31 /* Secrets Checker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secrets Checker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CDD8A99116A3DA800A901A0 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		6CDD8B95116A550900A901A0 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
-				6C971BAD0E5D8B5000A2EE31 /* Info-Secrets_Checker__Upgraded_.plist */,
+				6C971BAD0E5D8B5000A2EE31 /* Info-Secrets_Checker.plist */,
 			);
 			name = "Secrets Checker";
 			sourceTree = "<group>";
@@ -149,8 +149,8 @@
 				2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */,
 				F5258DA30242813B01F156A7 /* MyDocWindowController.h */,
 				F561E8AE024AAFB0010EFA46 /* MyDocWindowController.m */,
-				F5C45C560244E69501E0B8CE /* FlagChangeWindow.m */,
 				F5C45C570244E69501E0B8CE /* FlagChangeWindow.h */,
+				F5C45C560244E69501E0B8CE /* FlagChangeWindow.m */,
 				F58B646F02443390019897C4 /* Key.h */,
 				F58B647002443390019897C4 /* Key.m */,
 				F58B6463024424A0019897C4 /* GPGTask.h */,
@@ -165,9 +165,9 @@
 			children = (
 				2A37F4B0FDCFA73011CA2CEA /* main.m */,
 				F527E01002429EEF01A03BFB /* NSArray_Extensions.h */,
+				F527E01302429EEF01A03BFB /* NSArray_Extensions.m */,
 				F527E01102429EEF01A03BFB /* ImageAndTextCell.h */,
 				F527E01202429EEF01A03BFB /* ImageAndTextCell.m */,
-				F527E01302429EEF01A03BFB /* NSArray_Extensions.m */,
 				F527E01402429EEF01A03BFB /* NSOutlineView_Extensions.h */,
 				F527E01502429EEF01A03BFB /* NSOutlineView_Extensions.m */,
 			);
@@ -367,7 +367,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-Secrets_Checker__Upgraded_.plist";
+				INFOPLIST_FILE = "Info-Secrets_Checker.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
@@ -393,7 +393,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-Secrets_Checker__Upgraded_.plist";
+				INFOPLIST_FILE = "Info-Secrets_Checker.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
