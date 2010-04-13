@@ -12,11 +12,19 @@
 
 #pragma mark DATA
 - (SimpleTreeNode*) treeData { return treeData;}
-- (void) setTreeData:(SimpleTreeNode*) node { [treeData release]; treeData = [node retain];}
+- (void) setTreeData:(SimpleTreeNode*) node { 
+	SimpleTreeNode * oldTreeData = treeData;
+	treeData = [node retain];
+	[oldTreeData release]; 
+}
 
 
 - (NSString*) encryptionType { return encryptionType;}
-- (void) setEncryptionType:(NSString*) type {[encryptionType release]; encryptionType = [type retain];}
+- (void) setEncryptionType:(NSString*) type {
+	NSString * oldEncryptionType = encryptionType;
+	encryptionType = [type retain];
+	[oldEncryptionType release]; 
+}
 - (NSInteger) encryptionTypeAsInt
 {
 	if ([encryptionType isEqual:SCSymmetricEncryptionKey]) {return SCSymmetricEncryption;}
@@ -36,8 +44,9 @@
 - (NSString*) keyID {return keyID;}
 - (void) setKeyID:(NSString*) ID
 {
-	[keyID release];
+	NSString * oldKeyID = keyID;
 	keyID = [ID retain];
+	[oldKeyID release];
 }
 
 
@@ -47,9 +56,13 @@
 - (NSString*) customSymmetricCipher{return customSymmetricCipher;}
 - (void) setCustomSymmetricCipher:(NSString*) cipher
 {
-	[customSymmetricCipher release];
-	if (cipher) customSymmetricCipher = [cipher retain];
-	else customSymmetricCipher = [@"" retain];
+	NSString * newCipher = @"";
+	
+	if (cipher != nil) { newCipher = cipher; }
+		
+	NSString * oldCipher = customSymmetricCipher;
+	customSymmetricCipher = [cipher retain];
+	[oldCipher release];
 }
 
 - (BOOL) filterSearchLabelsOnly {return filterSearchLabelsOnly;}
@@ -65,20 +78,26 @@
 	filterDrawerIsOpen = b;}
 
 - (NSString*) windowFrame { return windowFrame;}
-- (void) setWindowFrame:(NSString*) frame { [windowFrame release]; windowFrame = [frame retain];}
+- (void) setWindowFrame:(NSString*) frame { 
+	NSString * oldFrame = windowFrame;
+	windowFrame = [frame retain];
+	[oldFrame release]; 
+}
 
 - (NSString*) passphrase {return passphrase;}
 - (void) setPassphrase:(NSString*) phrase
 {
-	[passphrase release];
+	NSString * oldPhrase = passphrase;
 	passphrase = [phrase retain];
+	[oldPhrase release];
 }
 
 - (NSString*) passphraseHint {return passphraseHint;}
-- (void) setPassphraseHint:(NSString*) phrase
+- (void) setPassphraseHint:(NSString*) hint
 {
-	[passphraseHint release];
-	passphraseHint = [phrase retain];
+	NSString * oldHint = passphraseHint;
+	passphraseHint = [hint retain];
+	[oldHint release];
 }
 
 

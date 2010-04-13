@@ -27,15 +27,17 @@
 - (NSArray*) privateKeys {return privateKeys;}
 - (void) setPrivateKeys:(NSArray*) keys
 {
-	[privateKeys release];
+	NSArray * oldKeys = privateKeys;
 	privateKeys = [keys retain];
+	[oldKeys release];
 }
 
 - (NSArray*) cipherAlgorithms {return cipherAlgorithms;}
 - (void) setCipherAlgorithms:(NSArray*) algorithms
 {
-	[cipherAlgorithms release];
+	NSArray * oldAlgorithms = cipherAlgorithms;
 	cipherAlgorithms = [algorithms retain];
+	[oldAlgorithms release];
 }
 
 

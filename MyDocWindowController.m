@@ -1388,14 +1388,16 @@ itemForPersistentObject:(id)data
 - (NSString*) previousEncryptionType { return previousEncryptionType;}
 - (void) setPreviousEncryptionType:(NSString*) type
 {
-	[previousEncryptionType release];
+	NSString * oldType = previousEncryptionType;
 	previousEncryptionType = [type retain];
+	[oldType release];
 }
 
 - (void) setCurrentData:(SimpleTreeNode*) node
 {
-	[currentData release];
-	currentData = [node retain];
+	SimpleTreeNode * oldNode = currentData;
+	currentData = [node retain];		
+	[oldNode release];
 }
 - (SimpleTreeNode*) currentData {return currentData;}
 

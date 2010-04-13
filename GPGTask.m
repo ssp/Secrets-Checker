@@ -538,8 +538,9 @@
 - (NSString *) temporaryKeyID { return temporaryKeyID;}
 - (void) setTemporaryKeyID:(NSString *) s {
 	NSLog(@"GPGTask setTemporaryKeyID: %@",s);
-	if (temporaryKeyID) { [temporaryKeyID release];}
+	NSString * oldID = temporaryKeyID;
 	temporaryKeyID = [s retain];
+	[oldID release];
 }
 
 
