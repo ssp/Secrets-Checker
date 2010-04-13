@@ -3,7 +3,7 @@
 //  GPG Checker
 //
 //  Created by Steffen Kamp on Sat Feb 02 2002.
-//  Copyright (c) 2001 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2001 earthlingsoft. All rights reserved.
 //
 
 #import "FlagChangeWindow.h"

@@ -3,7 +3,7 @@
 //  Secrets Checker
 //
 //  Created by Sven-S. Porst on Fri Mar 15 2002.
-//  Copyright (c) 2002 earthlingsoft. All rights reserved.
+//  Copyright (c) 2002-2010 earthlingsoft. All rights reserved.
 //
 
 #import "MyDocWindowController.h"

@@ -3,7 +3,7 @@
 //  Secrets Checker
 //
 //  Created by Sven-S. Porst on Thu Mar 14 2002.
-//  Copyright (c) 2002 earthlingsoft. All rights reserved.
+//  Copyright (c) 2002-2010 earthlingsoft. All rights reserved.
 //
 
 #import "MyDocument.h"

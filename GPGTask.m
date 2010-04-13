@@ -3,7 +3,7 @@
 //  GPG Checker
 //
 //  Created by Sven-S. Porst on Sat Dec 29 2001.
-//  Copyright (c) 2001 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2001-2010 earthlingsoft. All rights reserved.
 //
 
 #import "GPGTask.h"

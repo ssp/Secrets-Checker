@@ -3,7 +3,7 @@
 //  GPG Checker
 //
 //  Created by Sven-S. Porst on Sun Jan 13 2002.
-//  Copyright (c) 2001 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2001 earthlingsoft. All rights reserved.
 //
 
 #import "Key.h"
