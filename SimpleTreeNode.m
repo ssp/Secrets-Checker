@@ -322,30 +322,34 @@
 	NSString* formatString;
 	NSMutableString* s = [NSMutableString string];
 	
+	NSString * result = nil;
+	
 	if ([data isLeaf]) {
 		if (!tabbed) formatString = @"%@:\n%@\n\n";
 		else formatString = @"%@\t%@\n";
-		return [NSString stringWithFormat:formatString, [self hierarchicalName], [data secret]];
+		result = [NSString stringWithFormat:formatString, [self hierarchicalName], [data secret]];
 	}
 	else {
 		myEnum = [[self children] objectEnumerator];
 		while (item = [myEnum nextObject]) {
 			[s appendString:[item listForTreeTabbed:tabbed]];
 		}
-		return s;
+		result = s;
 	}
+	
+	return result;
 }
 
 
 -(NSString*) hierarchicalName
 {
 	NSString * name = [(SimpleNodeData*)[self nodeData] name];
-
+	NSString * result = @"";
+	
 	if ([self nodeParent]) {
-		return [NSString stringWithFormat:@"%@/%@", [(SimpleTreeNode*)[self nodeParent] hierarchicalName], name];
+		result = [NSString stringWithFormat:@"%@/%@", [(SimpleTreeNode*)[self nodeParent] hierarchicalName], name];
 	}
-	// don't return anything if there is no parent as then we're the root node ourselves.
-	return @"";
+	return result;
 }	
 
 /*
