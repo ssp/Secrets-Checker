@@ -67,7 +67,10 @@
     if (extend==NO) [self deselectAll:nil];
     for (i=0;i<[items count];i++) {
         NSInteger row = [self rowForItem:[items objectAtIndex:i]];
-        if(row>=0) [self selectRow: row byExtendingSelection:YES];
+        if(row>=0) {
+			NSIndexSet * rowIndexes = [NSIndexSet indexSetWithIndex:row];
+			[self selectRowIndexes:rowIndexes byExtendingSelection:YES];
+		}
     }
 }
 

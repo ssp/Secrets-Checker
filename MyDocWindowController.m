@@ -871,7 +871,8 @@ itemForPersistentObject:(id)data
 
 //	if ([data isExpanded]) [browser expandItem:newChild];
 	newRow = [browser rowForItem: newChild];
-	if (newRow>=0) [browser selectRow: newRow byExtendingSelection: NO];
+	NSIndexSet * rowIndexes = [NSIndexSet indexSetWithIndex: newRow];
+	if (newRow>=0) [browser selectRowIndexes:rowIndexes byExtendingSelection: NO];
 	if (newRow>=0) [browser editColumn:0 row:newRow withEvent:nil select:YES];
 
 	// make sure everyone knows about this to save the previously edited data
