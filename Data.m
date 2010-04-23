@@ -121,12 +121,14 @@
 	// output looks like
 	// Cipher: 3DES, CAST5, BLOWFISH, RIJNDAEL, RIJNDAEL192, RIJNDAEL256, TWOFISH
 	// 012345678
-	NSString *		ciphersString = [result substringFromIndex:8];
-	NSArray *		ciphers = [ciphersString componentsSeparatedByString:@", "];
-
-	[self setCipherAlgorithms:ciphers];
-	
-	debugLog(@"Data: received Ciphers");
+	if ( [result length] > 8 ) {
+		NSString *		ciphersString = [result substringFromIndex:8];
+		NSArray *		ciphers = [ciphersString componentsSeparatedByString:@", "];
+		
+		[self setCipherAlgorithms:ciphers];
+		
+		debugLog(@"Data: received Ciphers");		
+	}
 }
 
 

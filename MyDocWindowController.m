@@ -406,7 +406,7 @@
 	MyDocument*		d = [self document];
 	NSArray*			keyArray = [[Data Data] privateKeys];
 	NSEnumerator*	myEnum = [keyArray objectEnumerator];
-	NSArray*			myObj;
+	NSArray*		myObj;
 	NSString*		docKey = [d keyID];
 	NSString*		prefsKey = [PREFS stringForKey:SCEncryptToKey];
 
@@ -414,9 +414,14 @@
 	[privateKeyPopup removeAllItems];
 
 	while (myObj = [myEnum nextObject]){
-		//myArray = [myObj componentsSeparatedByString:@":"];
-		[privateKeyPopup addItemWithTitle:[NSString stringWithFormat:@"%@ (ID: %@, %@ bit)", [myObj objectAtIndex:9], [[myObj objectAtIndex:4] substringFromIndex:8], [myObj objectAtIndex:2]]];
-		[[privateKeyPopup lastItem] setRepresentedObject:[myObj objectAtIndex:4]];
+		if ([myObj count] >= 9) {
+			NSString * keyIDString = [myObj objectAtIndex:4];
+			if ( [keyIDString length] > 8 ) {
+				NSString * menuItemName = [NSString stringWithFormat:@"%@ (ID: %@, %@ bit)", [myObj objectAtIndex:9], [keyIDString substringFromIndex:8], [myObj objectAtIndex:2]];
+				[privateKeyPopup addItemWithTitle:menuItemName];
+				[[privateKeyPopup lastItem] setRepresentedObject:keyIDString];			
+			}
+		}
 	}
 
 	// determine which key should be selected in the menu with the following priority:
@@ -434,13 +439,17 @@
 		myEnum = [[[Data Data] privateKeys] objectEnumerator];
 		
 		while (myObj = [myEnum nextObject]) {
-			if ([prefsKey isEqualTo:[myObj objectAtIndex:4]]) {
-				[privateKeyPopup selectItemAtIndex:[keyArray indexOfObject:myObj]];
-			}
-
-			if ([docKey isEqualTo:[myObj objectAtIndex:4]]) {
-				[privateKeyPopup selectItemAtIndex:[keyArray indexOfObject:myObj]];
-				break;
+			if ( [myObj count] >= 4 ) {
+				NSString * keyIDString = [myObj objectAtIndex:4];
+										  
+				if ([prefsKey isEqualTo:keyIDString]) {
+					[privateKeyPopup selectItemAtIndex:[keyArray indexOfObject:myObj]];
+				}
+										  
+				if ([docKey isEqualTo:keyIDString]) {
+					[privateKeyPopup selectItemAtIndex:[keyArray indexOfObject:myObj]];
+					break;
+				}
 			}
 		}
 
@@ -984,7 +993,9 @@ itemForPersistentObject:(id)data
 	if (s) {
 		// case for public key encryption
 		// prepare sheet
-		[passphraseSheetInfoTextField setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Please enter the passphrase for your pgp key ID %@",@"Please enter passphrase for key %@"), [s substringFromIndex:8]]];
+		if ( [s length] > 8 ) {
+			[passphraseSheetInfoTextField setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Please enter the passphrase for your pgp key ID %@",@"Please enter passphrase for key %@"), [s substringFromIndex:8]]];			
+		}
 	}
 	else {
 		// symmetric case
