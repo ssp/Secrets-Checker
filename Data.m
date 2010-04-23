@@ -86,6 +86,9 @@
 	[self setCipherAlgorithms:[NSArray array]];
 	[self setPrivateKeys:[NSArray array]];
 
+	// autosaving
+	[[NSDocumentController sharedDocumentController] setAutosavingDelay: 60.];
+	
 	return self;
 }
 
