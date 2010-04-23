@@ -1,6 +1,6 @@
 ﻿/* Localized versions of Info.plist keys */
 
 CFBundleName = "Secrets Checker";
-CFBundleShortVersionString = "Secrets Checker version 0.3";
-CFBundleGetInfoString = "Secrets Checker version 0.3, 2002-2010 by earthlingsoft.";
+CFBundleShortVersionString = "Secrets Checker version 0.4";
+CFBundleGetInfoString = "Secrets Checker version 0.4, 2002-2010 by earthlingsoft.";
 NSHumanReadableCopyright = "2002-2010 by earthlingsoft.";
